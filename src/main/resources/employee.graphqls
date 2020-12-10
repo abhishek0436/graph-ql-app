@@ -1,0 +1,48 @@
+scalar Date
+
+type Employee {
+    id: Int!
+    name: String!
+    department: String!
+    dob: Date!
+    addressList: [Address!]!
+}
+
+type Address {
+    street: String
+    city: String!
+    county: String
+    country: String!
+    postcode: String!
+}
+
+type Query {
+    findEmployee(id: Int!): Employee!
+    countAddress(id: Int!): Int!
+    allEmployee: [Employee]!
+}
+
+input AddEmployee {
+    name: String!
+    department: String!
+    dob: Date!
+    addressList: [addAddress!]!
+}
+
+input addAddress {
+    street: String
+    city: String!
+    county: String
+    country: String!
+    postcode: String!
+}
+
+type Mutation {
+    createEmployee(addEmployee: AddEmployee!): Employee!
+}
+
+
+schema {
+  query: Query
+  mutation: Mutation
+}
